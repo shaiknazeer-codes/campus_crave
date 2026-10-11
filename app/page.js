@@ -28,7 +28,7 @@ function LoginForm() {
       : errorParam === "AccessDenied"
       ? "Access was denied during Google Sign-In."
       : errorParam === "Configuration"
-      ? "Google OAuth requires AUTH_GOOGLE_ID and AUTH_GOOGLE_SECRET in your .env file."
+      ? "OAuth Configuration error: Missing AUTH_SECRET, AUTH_GOOGLE_ID, or AUTH_GOOGLE_SECRET in environment variables (Vercel)."
       : "Authentication error: " + errorParam
     : "";
 
