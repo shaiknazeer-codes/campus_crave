@@ -99,7 +99,7 @@ export default function ProfileDropdown({ user, onSignOut }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute right-0 top-full mt-2.5 w-72 origin-top-right rounded-2xl border border-orange-100 bg-white/95 p-3 shadow-2xl backdrop-blur-xl z-50"
+            className="absolute right-0 top-full mt-2.5 w-72 sm:w-80 max-w-[calc(100vw-1.5rem)] origin-top-right rounded-2xl border border-orange-100 bg-white/95 p-3 shadow-2xl backdrop-blur-xl z-50"
           >
             {/* User Details Header */}
             <div className="flex items-center gap-3 rounded-xl bg-orange-50/70 p-3 border border-orange-100/60">

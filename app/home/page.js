@@ -430,22 +430,22 @@ export default function HomePage() {
 
                 {/* Navbar */}
                 <nav className="sticky top-0 z-30 border-b border-orange-100/70 bg-white/80 backdrop-blur-xl">
-                    <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-4">
+                    <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3.5 sm:px-6 lg:px-8 py-3 sm:py-4">
 
-                        <Link href="/home" className="flex items-center gap-2">
+                        <Link href="/home" className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <motion.span
-                                className="text-3xl"
+                                className="text-2xl sm:text-3xl"
                                 whileHover={{ rotate: [-10, 10, 0], scale: 1.15 }}
                             >
                                 🍔
                             </motion.span>
 
-                            <span className="text-xl font-black tracking-tight sm:text-2xl">
+                            <span className="text-base sm:text-xl md:text-2xl font-black tracking-tight">
                                 Campus <span className="text-[#ef6b32]">Crave.</span>
                             </span>
                         </Link>
 
-                        <div className="hidden gap-7 text-sm font-semibold md:flex">
+                        <div className="hidden gap-6 text-sm font-semibold md:flex">
                             <a href="#menu" className="transition hover:text-[#ef6b32]">
                                 Menu
                             </a>
@@ -454,22 +454,23 @@ export default function HomePage() {
                             </a>
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
                             <Link
                                 href="/cart"
-                                className="rounded-xl bg-[#ef6b32] px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-orange-200/60 transition hover:bg-orange-600 flex items-center gap-1.5"
+                                aria-label="Shopping Cart"
+                                className="rounded-xl bg-[#ef6b32] px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold text-white shadow-md sm:shadow-lg shadow-orange-200/60 transition hover:bg-orange-600 flex items-center gap-1.5 shrink-0"
                             >
                                 <span>🛒</span>
-                                <span>Cart ({cartCount})</span>
+                                <span><span className="hidden xs:inline">Cart </span>({cartCount})</span>
                             </Link> 
 
                             {user ? (
                                 <ProfileDropdown user={user} onSignOut={handleSignOut} />
                             ) : (
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-1.5 sm:gap-2">
                                     <Link
                                         href="/"
-                                        className="rounded-xl border border-orange-200/90 bg-white/90 px-3.5 py-2 text-xs sm:text-sm font-bold text-orange-600 transition hover:bg-orange-50"
+                                        className="rounded-xl border border-orange-200/90 bg-white/90 px-3 py-2 text-xs sm:text-sm font-bold text-orange-600 transition hover:bg-orange-50"
                                     >
                                         Sign In
                                     </Link>
@@ -486,7 +487,7 @@ export default function HomePage() {
                 </nav>
 
                 {/* Hero */}
-                <section className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
+                <section className="relative mx-auto grid max-w-7xl items-center gap-8 md:gap-10 px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 md:grid-cols-2 overflow-hidden sm:overflow-visible">
 
                     {/* Floating food decorations */}
                     {floatingFoods.map((food) => (
@@ -513,34 +514,33 @@ export default function HomePage() {
                         initial={{ opacity: 0, x: -45 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative z-10"
+                        className="relative z-10 text-center md:text-left"
                     >
                         <motion.span
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="inline-flex rounded-full border border-orange-200 bg-white/80 px-4 py-2 text-sm font-bold text-orange-700 shadow-sm"
+                            className="inline-flex rounded-full border border-orange-200 bg-white/80 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-orange-700 shadow-sm"
                         >
                             ✨ YOUR CAMPUS FOOD DESTINATION
                         </motion.span>
 
-                        <h1 className="mt-7 text-4xl font-black leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
+                        <h1 className="mt-4 sm:mt-6 text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.15] tracking-tight">
                             Hungry between
-                            <br />
-                            classes?
+                            <br className="hidden sm:inline" /> classes?
                             <br />
                             <span className="bg-gradient-to-r from-[#ef6b32] via-orange-500 to-amber-500 bg-clip-text text-transparent">
                                 We got you.
                             </span>
                         </h1>
 
-                        <p className="mt-6 max-w-lg text-base leading-8 text-gray-600 sm:text-lg">
+                        <p className="mt-4 sm:mt-5 max-w-lg mx-auto md:mx-0 text-sm leading-6 text-gray-600 sm:text-base sm:leading-7">
                             Your favourite canteen food, just a few clicks away.
                             Order ahead, skip the queue, and make every campus
                             break delicious.
                         </p>
 
-                        <div className="mt-8 flex flex-wrap gap-4">
+                        <div className="mt-6 sm:mt-8 flex flex-wrap justify-center md:justify-start gap-4">
                             <motion.button
                                 whileHover={{
                                     scale: 1.05,
@@ -548,15 +548,13 @@ export default function HomePage() {
                                 }}
                                 whileTap={{ scale: 0.96 }}
                                 onClick={scrollToMenu}
-                                className="rounded-2xl bg-gradient-to-r from-[#ef6b32] to-orange-500 px-7 py-4 font-bold text-white shadow-xl shadow-orange-200/60"
+                                className="w-full sm:w-auto rounded-2xl bg-gradient-to-r from-[#ef6b32] to-orange-500 px-7 py-3.5 sm:py-4 font-bold text-white shadow-xl shadow-orange-200/60 cursor-pointer"
                             >
                                 Explore Menu <span className="ml-2">→</span>
                             </motion.button>
-
-
                         </div>
 
-                        <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-gray-600">
+                        <div className="mt-7 sm:mt-9 flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-2 text-xs sm:text-sm font-medium text-gray-600">
                             <span>⚡ Quick ordering</span>
                             <span>🍽️ Canteen favourites</span>
                             <span>🎓 Made for students</span>
@@ -568,49 +566,49 @@ export default function HomePage() {
                         initial={{ opacity: 0, scale: 0.75, rotate: 8 }}
                         animate={{ opacity: 1, scale: 1, rotate: 0 }}
                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                        className="relative mx-auto flex min-h-80 w-full max-w-lg items-center justify-center sm:min-h-[440px]"
+                        className="relative mx-auto flex min-h-64 sm:min-h-80 w-full max-w-sm sm:max-w-lg items-center justify-center sm:min-h-[440px]"
                     >
                         <motion.div
-                            className="absolute h-64 w-64 rounded-full bg-gradient-to-br from-orange-200 via-amber-100 to-rose-200 sm:h-80 sm:w-80"
+                            className="absolute h-48 w-48 sm:h-72 sm:w-72 md:h-80 md:w-80 rounded-full bg-gradient-to-br from-orange-200 via-amber-100 to-rose-200"
                             animate={{ scale: [1, 1.08, 1], rotate: [0, 8, 0] }}
                             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                         />
 
                         <motion.div
-                            className="absolute h-72 w-72 rounded-full border border-dashed border-orange-300/70 sm:h-[23rem] sm:w-[23rem]"
+                            className="absolute h-56 w-56 sm:h-80 sm:w-80 md:h-[23rem] md:w-[23rem] rounded-full border border-dashed border-orange-300/70"
                             animate={{ rotate: 360 }}
                             transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
                         />
 
                         <motion.div
                             whileHover={{ rotate: 5, scale: 1.06 }}
-                            animate={{ y: [0, -12, 0] }}
+                            animate={{ y: [0, -10, 0] }}
                             transition={{
                                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                             }}
-                            className="relative flex h-52 w-52 items-center justify-center rounded-[2.5rem] border-8 border-white/90 bg-gradient-to-br from-orange-100 to-yellow-50 text-[8rem] shadow-[0_30px_80px_rgba(190,80,20,0.18)] sm:h-64 sm:w-64 sm:text-[10rem]"
+                            className="relative flex h-40 w-40 sm:h-56 sm:w-56 md:h-64 md:w-64 items-center justify-center rounded-[2rem] sm:rounded-[2.5rem] border-4 sm:border-8 border-white/90 bg-gradient-to-br from-orange-100 to-yellow-50 text-[6rem] sm:text-[8rem] md:text-[10rem] shadow-[0_20px_50px_rgba(190,80,20,0.16)]"
                         >
                             🍔
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [0, -8, 0], rotate: [0, 3, 0] }}
+                            animate={{ y: [0, -6, 0], rotate: [0, 2, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute bottom-7 left-0 rounded-2xl border border-white bg-white/90 p-4 shadow-xl backdrop-blur sm:bottom-12 sm:left-0"
+                            className="absolute bottom-2 left-2 sm:bottom-8 sm:left-0 rounded-xl sm:rounded-2xl border border-white bg-white/90 p-3 sm:p-4 shadow-lg sm:shadow-xl backdrop-blur"
                         >
-                            <p className="text-sm font-extrabold">Made for your breaks ❤️</p>
-                            <p className="mt-1 text-xs text-gray-500">
+                            <p className="text-xs sm:text-sm font-extrabold">Made for your breaks ❤️</p>
+                            <p className="mt-0.5 text-[10px] sm:text-xs text-gray-500">
                                 Good food, happy students
                             </p>
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [0, 9, 0], rotate: [0, -4, 0] }}
+                            animate={{ y: [0, 7, 0], rotate: [0, -3, 0] }}
                             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute right-0 top-10 rounded-2xl border border-white bg-white/90 px-4 py-3 shadow-xl backdrop-blur sm:right-1"
+                            className="absolute right-2 top-4 sm:right-1 sm:top-10 rounded-xl sm:rounded-2xl border border-white bg-white/90 px-3 py-2 sm:px-4 sm:py-3 shadow-lg sm:shadow-xl backdrop-blur"
                         >
-                            <p className="text-sm font-extrabold">Cravings = Solved!</p>
-                            <p className="mt-1 text-xs text-orange-600">
+                            <p className="text-xs sm:text-sm font-extrabold">Cravings = Solved!</p>
+                            <p className="mt-0.5 text-[10px] sm:text-xs text-orange-600">
                                 Your campus, your food
                             </p>
                         </motion.div>
@@ -620,7 +618,7 @@ export default function HomePage() {
                 {/* Menu */}
                 <section
                     id="menu"
-                    className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16"
+                    className="mx-auto max-w-7xl scroll-mt-20 sm:scroll-mt-24 px-4 sm:px-6 lg:px-8 py-10 sm:py-16"
                 >
                     <motion.div
                         id="popular"
@@ -628,18 +626,18 @@ export default function HomePage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6 }}
-                        className="mb-9"
+                        className="mb-6 sm:mb-9"
                     >
-                        <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
+                        <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
                             EXPLORE THE CANTEEN
                         </p>
 
-                        <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
+                        <h2 className="mt-2 sm:mt-3 text-2xl sm:text-4xl md:text-5xl font-black tracking-tight">
                             What are you{" "}
                             <span className="text-[#ef6b32]">craving?</span>
                         </h2>
 
-                        <p className="mt-3 text-gray-600">
+                        <p className="mt-2 sm:mt-3 text-xs sm:text-base text-gray-600">
                             Discover something delicious for your next campus break.
                         </p>
                     </motion.div>
@@ -649,26 +647,26 @@ export default function HomePage() {
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mb-7"
+                        className="mb-5 sm:mb-7"
                     >
                         <input
                             type="search"
                             placeholder="🔍  Search food or category..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="w-full rounded-2xl border border-orange-100 bg-white/80 px-5 py-4 shadow-sm outline-none transition focus:border-orange-400 focus:ring-4 focus:ring-orange-100 sm:max-w-md"
+                            className="w-full rounded-2xl border border-orange-100 bg-white/80 px-4 py-3 sm:px-5 sm:py-4 text-base sm:text-sm shadow-sm outline-none transition focus:border-orange-400 focus:ring-4 focus:ring-orange-100 sm:max-w-md"
                         />
                     </motion.div>
 
-                    {/* Categories */}
-                    <div className="mb-9 flex gap-3 overflow-x-auto pb-3">
+                    {/* Categories Horizontal Scroller */}
+                    <div className="mb-7 sm:mb-9 flex gap-2 sm:gap-3 overflow-x-auto pb-2 sm:pb-3 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
                         {categories.map((category) => (
                             <motion.button
                                 key={category.name}
                                 whileTap={{ scale: 0.94 }}
                                 onClick={() => setActiveCategory(category.name)}
-                                className={`shrink-0 rounded-xl px-5 py-3 text-sm font-bold transition-all duration-300 ${activeCategory === category.name
-                                        ? "bg-gradient-to-r from-[#ef6b32] to-orange-500 text-white shadow-lg shadow-orange-200"
+                                className={`shrink-0 rounded-xl px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${activeCategory === category.name
+                                        ? "bg-gradient-to-r from-[#ef6b32] to-orange-500 text-white shadow-md sm:shadow-lg shadow-orange-200"
                                         : "border border-orange-100 bg-white/80 text-gray-600 hover:border-orange-300 hover:bg-orange-50"
                                     }`}
                             >
@@ -722,7 +720,7 @@ export default function HomePage() {
                         <>
                             <motion.div
                                 layout
-                                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                                className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                             >
                                 {filteredFoods.map((food, index) => (
                                     <motion.article
@@ -732,14 +730,14 @@ export default function HomePage() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{
-                                            duration: 0.45,
-                                            delay: index * 0.08,
+                                             duration: 0.45,
+                                             delay: index * 0.08,
                                         }}
-                                        whileHover={{ y: -8 }}
-                                        className="group overflow-hidden rounded-3xl border border-orange-100/80 bg-white/85 shadow-sm backdrop-blur-sm transition-shadow duration-300 hover:shadow-2xl hover:shadow-orange-100"
+                                        whileHover={{ y: -6 }}
+                                        className="group overflow-hidden rounded-2xl sm:rounded-3xl border border-orange-100/80 bg-white/85 shadow-sm backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-orange-100 flex flex-col justify-between"
                                     >
                                         <div
-                                            className={`relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br ${food.color}`}
+                                            className={`relative flex h-40 sm:h-52 items-center justify-center overflow-hidden bg-gradient-to-br ${food.color}`}
                                         >
                                             <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/40 blur-2xl" />
 
@@ -753,29 +751,29 @@ export default function HomePage() {
                                                 <motion.span
                                                     whileHover={{ scale: 1.2, rotate: 8 }}
                                                     transition={{ type: "spring", stiffness: 250 }}
-                                                    className="relative text-8xl drop-shadow-md"
+                                                    className="relative text-7xl sm:text-8xl drop-shadow-md select-none"
                                                 >
                                                     {food.emoji}
                                                 </motion.span>
                                             )}
 
-                                            <span className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-xs font-bold text-orange-700 backdrop-blur">
+                                            <span className="absolute left-3.5 top-3.5 rounded-full border border-white/70 bg-white/85 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-orange-700 backdrop-blur shadow-xs">
                                                 {food.category}
                                             </span>
                                         </div>
 
-                                        <div className="p-5">
+                                        <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
                                             <div className="flex items-start justify-between gap-3">
-                                                <div>
-                                                    <h3 className="text-xl font-extrabold transition-colors group-hover:text-[#ef6b32]">
+                                                <div className="min-w-0 flex-1">
+                                                    <h3 className="text-lg sm:text-xl font-extrabold transition-colors group-hover:text-[#ef6b32] truncate">
                                                         {food.name}
                                                     </h3>
-                                                    <p className="mt-2 text-sm leading-6 text-gray-500">
+                                                    <p className="mt-1 sm:mt-1.5 text-xs sm:text-sm leading-relaxed text-gray-500 line-clamp-2">
                                                         {food.description}
                                                     </p>
                                                 </div>
 
-                                                <span className="rounded-xl bg-orange-50 px-3 py-2 text-lg font-black text-[#ef6b32]">
+                                                <span className="shrink-0 rounded-xl bg-orange-50 px-2.5 py-1.5 sm:px-3 sm:py-2 text-base sm:text-lg font-black text-[#ef6b32]">
                                                     ₹{food.price}
                                                 </span>
                                             </div>
@@ -785,7 +783,7 @@ export default function HomePage() {
                                                 whileTap={{ scale: 0.97 }}
                                                 onClick={() => addToCart(food)}
                                                 disabled={addingId === food.id}
-                                                className="mt-6 w-full rounded-xl border border-orange-200 bg-orange-50/70 py-3.5 font-bold text-[#e9602b] transition-colors hover:border-[#ef6b32] hover:bg-[#ef6b32] hover:text-white disabled:opacity-60 disabled:cursor-wait"
+                                                className="mt-4 sm:mt-6 w-full rounded-xl border border-orange-200 bg-orange-50/70 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-[#e9602b] transition-colors hover:border-[#ef6b32] hover:bg-[#ef6b32] hover:text-white disabled:opacity-60 disabled:cursor-wait min-h-[44px] cursor-pointer"
                                             >
                                                 {addingId === food.id ? "Saving to cart..." : "+ Add to Cart"}
                                             </motion.button>
@@ -798,13 +796,13 @@ export default function HomePage() {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="rounded-3xl border border-orange-100 bg-white/80 p-12 text-center"
+                                    className="rounded-3xl border border-orange-100 bg-white/80 p-8 sm:p-12 text-center"
                                 >
-                                    <span className="text-5xl">🔎</span>
-                                    <h3 className="mt-4 text-2xl font-extrabold">
+                                    <span className="text-4xl sm:text-5xl">🔎</span>
+                                    <h3 className="mt-3 sm:mt-4 text-xl sm:text-2xl font-extrabold">
                                         No food found
                                     </h3>
-                                    <p className="mt-2 text-gray-500">
+                                    <p className="mt-1.5 text-xs sm:text-sm text-gray-500">
                                         Try another food name or select a different category.
                                     </p>
                                     <button
@@ -812,7 +810,7 @@ export default function HomePage() {
                                             setSearch("");
                                             setActiveCategory("All Items");
                                         }}
-                                        className="mt-5 font-bold text-orange-600 hover:underline"
+                                        className="mt-4 font-bold text-orange-600 hover:underline text-sm cursor-pointer"
                                     >
                                         Clear filters
                                     </button>
@@ -823,12 +821,12 @@ export default function HomePage() {
                 </section>
 
                 {/* Animated call-to-action */}
-                <section className="mx-auto max-w-7xl px-5 pb-16">
+                <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-orange-500 via-[#ef6b32] to-rose-500 p-8 text-white shadow-xl sm:p-12"
+                        className="relative overflow-hidden rounded-2xl sm:rounded-[2rem] bg-gradient-to-r from-orange-500 via-[#ef6b32] to-rose-500 p-6 sm:p-10 lg:p-12 text-white shadow-xl"
                     >
                         <motion.div
                             className="absolute -right-16 -top-24 h-72 w-72 rounded-full border-[35px] border-white/10"
@@ -837,13 +835,13 @@ export default function HomePage() {
                         />
 
                         <div className="relative z-10 max-w-2xl">
-                            <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-100">
+                            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-orange-100">
                                 YOUR NEXT BREAK STARTS HERE
                             </p>
-                            <h2 className="mt-4 text-3xl font-black sm:text-4xl">
+                            <h2 className="mt-2.5 sm:mt-4 text-2xl sm:text-4xl font-black">
                                 Good food. Great mood. ❤️
                             </h2>
-                            <p className="mt-3 leading-7 text-orange-50">
+                            <p className="mt-2 sm:mt-3 text-sm sm:text-base leading-relaxed text-orange-50">
                                 Find your favourite food and make your campus break count.
                             </p>
 
@@ -851,7 +849,7 @@ export default function HomePage() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.96 }}
                                 onClick={scrollToMenu}
-                                className="mt-7 rounded-xl bg-white px-6 py-3.5 font-extrabold text-orange-600 shadow-lg"
+                                className="mt-5 sm:mt-7 rounded-xl bg-white px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-extrabold text-orange-600 shadow-lg cursor-pointer"
                             >
                                 Order your favourites →
                             </motion.button>
@@ -861,11 +859,11 @@ export default function HomePage() {
 
                 {/* Footer */}
                 <footer className="border-t border-orange-100/80 bg-white/70 backdrop-blur-lg">
-                    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-8 text-center sm:flex-row sm:text-left">
-                        <p className="text-lg font-black">
+                    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 py-6 sm:py-8 text-center sm:flex-row sm:text-left">
+                        <p className="text-base sm:text-lg font-black">
                             🍔 Campus <span className="text-[#ef6b32]">Crave.</span>
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500">
                             Made with ❤️ for campus life · © 2026 Campus Crave
                         </p>
                     </div>
@@ -879,7 +877,7 @@ export default function HomePage() {
                         initial={{ opacity: 0, y: 50, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-2xl px-5 py-4 shadow-2xl backdrop-blur-lg border ${
+                        className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-md z-50 flex items-center gap-3 rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 shadow-2xl backdrop-blur-lg border ${
                             cartFeedback.type === "success"
                                 ? "bg-green-600/95 text-white border-green-500"
                                 : cartFeedback.type === "auth"
@@ -887,10 +885,10 @@ export default function HomePage() {
                                 : "bg-red-600/95 text-white border-red-500"
                         }`}
                     >
-                        <span className="text-xl">
+                        <span className="text-lg sm:text-xl shrink-0">
                             {cartFeedback.type === "success" ? "✓" : cartFeedback.type === "auth" ? "🔒" : "⚠️"}
                         </span>
-                        <div className="text-sm font-bold">
+                        <div className="text-xs sm:text-sm font-bold flex-1">
                             {cartFeedback.message}
                             {cartFeedback.type === "auth" && (
                                 <Link href="/" className="ml-2 underline font-extrabold text-yellow-200 hover:text-white">
@@ -900,7 +898,7 @@ export default function HomePage() {
                         </div>
                         <button
                             onClick={() => setCartFeedback(null)}
-                            className="ml-2 rounded-lg bg-white/20 px-2 py-0.5 text-xs font-bold hover:bg-white/30"
+                            className="ml-2 rounded-lg bg-white/20 px-2 py-0.5 text-xs font-bold hover:bg-white/30 cursor-pointer"
                         >
                             ✕
                         </button>

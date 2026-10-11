@@ -67,7 +67,7 @@ export default function Toast({ toast, onDismiss }) {
             <button
               onClick={onDismiss}
               aria-label="Close notification"
-              className="ml-1 -mr-1 -mt-1 flex h-7 w-7 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition cursor-pointer"
+              className="ml-1 -mr-1 -mt-1 flex h-8 w-8 sm:h-7 sm:w-7 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition cursor-pointer active:scale-95"
             >
               ✕
             </button>

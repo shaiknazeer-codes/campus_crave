@@ -222,41 +222,42 @@ export default function CheckoutPage() {
       <div className="relative z-10">
         {/* Navbar */}
         <nav className="border-b border-orange-100 bg-white/80 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-4">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
             <Link href="/home" className="flex items-center gap-2">
-              <span className="text-3xl">🍔</span>
-              <span className="text-xl font-black sm:text-2xl">
+              <span className="text-2xl sm:text-3xl">🍔</span>
+              <span className="text-lg font-black sm:text-2xl tracking-tight">
                 Campus <span className="text-[#ef6b32]">Crave.</span>
               </span>
             </Link>
 
             <Link
               href="/cart"
-              className="rounded-xl border border-orange-200 px-4 py-2.5 text-sm font-bold text-orange-600 transition hover:bg-orange-50"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-orange-200 px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold text-orange-600 transition hover:bg-orange-50 active:scale-95"
             >
-              ← Back to Cart
+              <span>←</span>
+              <span>Back to Cart</span>
             </Link>
           </div>
         </nav>
 
-        <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
           {orderSuccess ? (
             /* Order Success State */
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="mx-auto max-w-2xl rounded-3xl border border-orange-100 bg-white p-8 text-center shadow-xl sm:p-12"
+              className="mx-auto max-w-2xl rounded-2xl sm:rounded-3xl border border-orange-100 bg-white p-5 text-center shadow-xl sm:p-12"
             >
-              <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-green-50 text-5xl text-green-600">
+              <div className="inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl sm:rounded-3xl bg-green-50 text-4xl sm:text-5xl text-green-600">
                 🎉
               </div>
 
-              <h1 className="mt-6 text-3xl font-black sm:text-4xl text-gray-900">
+              <h1 className="mt-4 sm:mt-6 text-2xl font-black sm:text-4xl text-gray-900">
                 Order Confirmed!
               </h1>
 
-              <p className="mt-2 text-base text-gray-600">
+              <p className="mt-2 text-sm sm:text-base text-gray-600">
                 Your order has been recorded in our canteen database and sent to the kitchen.
               </p>
 
@@ -321,58 +322,58 @@ export default function CheckoutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
+                <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
                   ALMOST THERE
                 </p>
 
-                <h1 className="mt-3 text-4xl font-black sm:text-5xl">
+                <h1 className="mt-2 sm:mt-3 text-3xl font-black tracking-tight sm:text-5xl">
                   Checkout<span className="text-[#ef6b32]">.</span>
                 </h1>
 
-                <p className="mt-3 text-gray-500">
+                <p className="mt-2 text-sm sm:text-base text-gray-500">
                   Enter your details and get ready for your campus food break.
                 </p>
               </motion.div>
 
               {cart.length === 0 ? (
-                <div className="mt-10 rounded-3xl border border-orange-100 bg-white p-10 text-center shadow-sm">
-                  <div className="text-6xl">🛒</div>
-                  <h2 className="mt-5 text-2xl font-extrabold">
+                <div className="mt-10 rounded-2xl sm:rounded-3xl border border-orange-100 bg-white p-6 sm:p-10 text-center shadow-sm">
+                  <div className="text-5xl sm:text-6xl">🛒</div>
+                  <h2 className="mt-4 sm:mt-5 text-xl sm:text-2xl font-extrabold">
                     Your cart is empty
                   </h2>
-                  <p className="mt-2 text-gray-500">
+                  <p className="mt-2 text-sm text-gray-500">
                     Add some delicious food before checking out.
                   </p>
 
                   <Link
                     href="/home"
-                    className="mt-6 inline-flex rounded-xl bg-[#ef6b32] px-6 py-3.5 font-bold text-white transition hover:bg-orange-600"
+                    className="mt-6 inline-flex rounded-xl bg-[#ef6b32] px-6 py-3.5 text-sm sm:text-base font-bold text-white transition hover:bg-orange-600 active:scale-95"
                   >
                     Explore Menu →
                   </Link>
                 </div>
               ) : (
-                <div className="mt-10 grid items-start gap-8 lg:grid-cols-[1fr_380px]">
+                <div className="mt-8 sm:mt-10 grid items-start gap-8 lg:grid-cols-[1fr_380px]">
                   {/* Student details form */}
                   <motion.section
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="rounded-3xl border border-orange-100 bg-white/90 p-6 shadow-sm sm:p-8"
+                    className="rounded-2xl sm:rounded-3xl border border-orange-100 bg-white/90 p-4 sm:p-8 shadow-sm"
                   >
-                    <h2 className="text-2xl font-extrabold">
+                    <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900">
                       Student Details
                     </h2>
 
-                    <p className="mt-2 text-sm text-gray-500">
+                    <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500">
                       Provide your contact information for your order.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="mt-7 space-y-5">
+                    <form onSubmit={handleSubmit} className="mt-6 space-y-4 sm:space-y-5">
                       <div>
                         <label
                           htmlFor="name"
-                          className="mb-2 block text-sm font-bold text-gray-700"
+                          className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-gray-700"
                         >
                           Full Name
                         </label>
@@ -387,14 +388,14 @@ export default function CheckoutPage() {
                           onChange={handleChange}
                           required
                           maxLength={100}
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-base sm:text-sm outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                         />
                       </div>
 
                       <div>
                         <label
                           htmlFor="email"
-                          className="mb-2 block text-sm font-bold text-gray-700"
+                          className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-gray-700"
                         >
                           College Email
                         </label>
@@ -409,14 +410,14 @@ export default function CheckoutPage() {
                           onChange={handleChange}
                           required
                           maxLength={254}
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-base sm:text-sm outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                         />
                       </div>
 
                       <div>
                         <label
                           htmlFor="phone"
-                          className="mb-2 block text-sm font-bold text-gray-700"
+                          className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-gray-700"
                         >
                           Mobile Number
                         </label>
@@ -434,14 +435,14 @@ export default function CheckoutPage() {
                           title="Enter a valid 10-digit Indian mobile number"
                           maxLength={10}
                           required
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-base sm:text-sm outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                         />
                       </div>
 
                       <div>
                         <label
                           htmlFor="pickupNote"
-                          className="mb-2 block text-sm font-bold text-gray-700"
+                          className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-gray-700"
                         >
                           Pickup Note
                           <span className="ml-2 font-normal text-gray-400">
@@ -457,19 +458,19 @@ export default function CheckoutPage() {
                           onChange={handleChange}
                           maxLength={250}
                           rows={3}
-                          className="w-full resize-y rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                          className="w-full resize-y rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-base sm:text-sm outline-none transition focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                         />
                       </div>
 
                       {/* Pickup information */}
-                      <div className="rounded-2xl border border-orange-100 bg-orange-50/80 p-4">
+                      <div className="rounded-2xl border border-orange-100 bg-orange-50/80 p-3.5 sm:p-4">
                         <div className="flex items-start gap-3">
                           <span className="text-2xl">🎓</span>
                           <div>
-                            <p className="font-extrabold text-orange-900">
+                            <p className="font-extrabold text-orange-900 text-sm sm:text-base">
                               Campus Canteen Pickup
                             </p>
-                            <p className="mt-1 text-sm leading-6 text-orange-800">
+                            <p className="mt-1 text-xs sm:text-sm leading-5 sm:leading-6 text-orange-800">
                               Collect your order directly from the canteen counter.
                               Instant preparation once confirmed.
                             </p>
@@ -480,7 +481,7 @@ export default function CheckoutPage() {
                       {errorMessage && (
                         <div
                           role="alert"
-                          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700"
+                          className="rounded-xl border border-red-200 bg-red-50 p-4 text-xs sm:text-sm font-semibold text-red-700"
                         >
                           ⚠️ {errorMessage}
                         </div>
@@ -489,7 +490,7 @@ export default function CheckoutPage() {
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full rounded-xl bg-gradient-to-r from-[#ef6b32] to-orange-500 py-4 font-extrabold text-white shadow-lg shadow-orange-200/60 transition hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="w-full rounded-xl bg-gradient-to-r from-[#ef6b32] to-orange-500 py-3.5 sm:py-4 text-sm sm:text-base font-extrabold text-white shadow-lg shadow-orange-200/60 transition hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
                       >
                         {submitting ? "Placing Order..." : `Place Order · ₹${subtotal} →`}
                       </button>
@@ -505,9 +506,9 @@ export default function CheckoutPage() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.15 }}
-                    className="rounded-3xl border border-orange-100 bg-white/95 p-6 shadow-lg shadow-orange-100/50 lg:sticky lg:top-6"
+                    className="rounded-2xl sm:rounded-3xl border border-orange-100 bg-white/95 p-4 sm:p-6 shadow-lg shadow-orange-100/50 lg:sticky lg:top-6"
                   >
-                    <h2 className="text-xl font-extrabold">Order Summary</h2>
+                    <h2 className="text-lg sm:text-xl font-extrabold">Order Summary</h2>
 
                     <p className="mt-2 text-sm text-gray-500">
                       {totalItems} {totalItems === 1 ? "item" : "items"} in your cart

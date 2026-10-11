@@ -143,7 +143,7 @@ function LoginForm() {
   };
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#fffaf3] p-4 sm:p-6 lg:p-10">
+    <main className="relative flex min-h-screen items-center justify-center overflow-x-hidden bg-[#fffaf3] p-3 sm:p-6 lg:p-10">
       {/* Toast Notification Container */}
       <Toast toast={toast} onDismiss={() => setToast(null)} />
       {/* Background ambient lighting */}
@@ -151,12 +151,12 @@ function LoginForm() {
         <motion.div
           animate={{ x: [0, 40, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-28 -top-28 h-96 w-96 rounded-full bg-orange-300/30 blur-3xl"
+          className="absolute -left-28 -top-28 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-orange-300/30 blur-3xl"
         />
         <motion.div
           animate={{ x: [0, -35, 0], y: [0, -25, 0], scale: [1, 1.15, 1] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -right-28 -bottom-28 h-[28rem] w-[28rem] rounded-full bg-yellow-200/35 blur-3xl"
+          className="absolute -right-28 -bottom-28 h-80 w-80 sm:h-[28rem] sm:w-[28rem] rounded-full bg-yellow-200/35 blur-3xl"
         />
       </div>
 
@@ -164,63 +164,61 @@ function LoginForm() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative z-10 grid w-full max-w-5xl overflow-hidden rounded-3xl border border-orange-100/80 bg-white shadow-2xl md:grid-cols-2"
+        className="relative z-10 grid w-full max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl border border-orange-100/80 bg-white shadow-xl sm:shadow-2xl md:grid-cols-2"
       >
-        {/* Left Side: Brand Experience */}
-        <section className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#fff4e6] via-[#ffe5cb] to-[#ffd4ac] p-8 text-gray-900 sm:p-12 md:min-h-[640px] border-b md:border-b-0 md:border-r border-orange-200/60">
+        {/* Left Side: Brand Experience (Compact on mobile, rich on desktop) */}
+        <section className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#fff4e6] via-[#ffe5cb] to-[#ffd4ac] p-6 sm:p-10 md:p-12 md:min-h-[640px] border-b md:border-b-0 md:border-r border-orange-200/60">
           {/* Subtle geometric light circles */}
           <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/70 blur-2xl" />
           <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-orange-300/30 blur-3xl" />
 
           {/* Top: Logo & Welcome */}
           <div className="relative z-10">
-            <Link href="/" className="inline-flex items-center gap-3">
+            <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3">
               <motion.div
                 whileHover={{ rotate: [-6, 6, 0], scale: 1.08 }}
-                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl shadow-md border border-orange-100"
+                className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white text-xl sm:text-2xl shadow-md border border-orange-100"
               >
                 🍔
               </motion.div>
               <div>
-                <p className="text-xl font-black tracking-tight text-gray-950 sm:text-2xl">
+                <p className="text-lg sm:text-xl font-black tracking-tight text-gray-950 sm:text-2xl">
                   Campus <span className="text-[#ea580c]">Crave.</span>
                 </p>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#c2410c]">
+                <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#c2410c]">
                   College Canteen Platform
                 </p>
               </div>
             </Link>
 
-            <div className="mt-10 sm:mt-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-orange-200/90 bg-white/80 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#c2410c] shadow-xs backdrop-blur-sm">
+            <div className="mt-6 sm:mt-10 md:mt-12">
+              <span className="inline-flex items-center gap-2 rounded-full border border-orange-200/90 bg-white/80 px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#c2410c] shadow-xs backdrop-blur-sm">
                 <span>🔥</span> Less Queue · More Craving
               </span>
 
-              <h1 className="mt-4 text-3xl font-black leading-tight text-gray-950 sm:text-4xl lg:text-5xl">
+              <h1 className="mt-3 sm:mt-4 text-2xl font-black leading-tight text-gray-950 sm:text-4xl lg:text-5xl">
                 Fresh food.
-                <br />
+                <span className="inline md:hidden"> </span>
+                <br className="hidden md:inline" />
                 Fast breaks.
-                <br />
+                <span className="inline md:hidden"> </span>
+                <br className="hidden md:inline" />
                 <span className="text-[#ea580c]">Zero waiting.</span>
               </h1>
 
-              <p className="mt-4 max-w-md text-sm font-medium leading-6 text-gray-700 sm:text-base sm:leading-7">
+              <p className="mt-2.5 sm:mt-4 max-w-md text-xs sm:text-sm md:text-base font-medium leading-relaxed text-gray-700">
                 Order your favorite sandwiches, dosas, coffee, and canteen meals directly from your phone. Skip the queue and collect when ready.
               </p>
             </div>
           </div>
 
-          {/* Value Props */}
-          <div className="relative z-10 mt-8 space-y-3.5 pt-6 border-t border-orange-200/80 text-xs sm:text-sm text-gray-800">
+          {/* Value Props (Shown on tablet & desktop) */}
+          <div className="relative z-10 mt-6 md:mt-8 space-y-3 pt-4 sm:pt-6 border-t border-orange-200/80 text-xs sm:text-sm text-gray-800 hidden md:block">
             <div className="flex items-center gap-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/90 border border-orange-200/80 text-base shadow-xs text-orange-600">
                 ⚡
               </span>
               <span className="font-medium text-gray-800">Fast live menu with real-time canteen status</span>
-            </div>
-            <div className="flex items-center gap-3">
-              
-              
             </div>
             <div className="flex items-center gap-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/90 border border-orange-200/80 text-base shadow-xs text-orange-600">
@@ -232,7 +230,7 @@ function LoginForm() {
         </section>
 
         {/* Right Side: Authentication Form */}
-        <section className="flex flex-col justify-center p-7 sm:p-10 md:p-12 lg:p-14">
+        <section className="flex flex-col justify-center p-5 sm:p-8 md:p-10 lg:p-12">
           <div className="mb-6">
             <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
               STUDENT SIGN IN
@@ -345,7 +343,7 @@ function LoginForm() {
                     setError("");
                   }}
                   required
-                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3.5 text-base sm:text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                 />
               </div>
             </div>
@@ -370,7 +368,7 @@ function LoginForm() {
                     setError("");
                   }}
                   required
-                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 pr-20 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3.5 pr-20 text-base sm:text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                 />
 
                 <button

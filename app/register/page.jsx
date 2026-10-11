@@ -101,18 +101,18 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#fffaf3] p-4 sm:p-6 lg:p-10">
+    <main className="relative flex min-h-screen items-center justify-center overflow-x-hidden bg-[#fffaf3] p-3 sm:p-6 lg:p-10">
       {/* Ambient background lighting */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <motion.div
           animate={{ x: [0, 35, 0], y: [0, 25, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-28 -top-28 h-96 w-96 rounded-full bg-orange-300/30 blur-3xl"
+          className="absolute -left-28 -top-28 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-orange-300/30 blur-3xl"
         />
         <motion.div
           animate={{ x: [0, -30, 0], y: [0, -20, 0], scale: [1, 1.12, 1] }}
           transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -right-28 -bottom-28 h-[28rem] w-[28rem] rounded-full bg-yellow-200/35 blur-3xl"
+          className="absolute -right-28 -bottom-28 h-80 w-80 sm:h-[28rem] sm:w-[28rem] rounded-full bg-yellow-200/35 blur-3xl"
         />
       </div>
 
@@ -120,53 +120,55 @@ export default function RegisterPage() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative z-10 grid w-full max-w-5xl overflow-hidden rounded-3xl border border-orange-100/80 bg-white shadow-2xl md:grid-cols-2"
+        className="relative z-10 grid w-full max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl border border-orange-100/80 bg-white shadow-xl sm:shadow-2xl md:grid-cols-2"
       >
-        {/* Left Side: Brand Story */}
-        <section className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#ef6b32] via-[#e85f26] to-[#dc5218] p-8 text-white sm:p-12 md:min-h-[680px]">
+        {/* Left Side: Brand Story (Compact on mobile, rich on desktop) */}
+        <section className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#ef6b32] via-[#e85f26] to-[#dc5218] p-6 sm:p-10 md:p-12 md:min-h-[680px]">
           <div className="absolute -right-16 -top-16 h-60 w-60 rounded-full bg-white/10 blur-xl" />
           <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-black/15 blur-2xl" />
 
           {/* Top Logo & Welcome */}
           <div className="relative z-10">
-            <Link href="/" className="inline-flex items-center gap-3">
+            <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3">
               <motion.div
                 whileHover={{ rotate: [-6, 6, 0], scale: 1.08 }}
-                className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl shadow-md"
+                className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white text-xl sm:text-2xl shadow-md"
               >
                 🍔
               </motion.div>
               <div>
-                <p className="text-xl font-black tracking-tight text-white sm:text-2xl">
+                <p className="text-lg sm:text-xl font-black tracking-tight text-white sm:text-2xl">
                   Campus <span className="text-yellow-200">Crave.</span>
                 </p>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
+                <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
                   College Canteen Platform
                 </p>
               </div>
             </Link>
 
-            <div className="mt-10 sm:mt-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-orange-100 backdrop-blur-sm">
+            <div className="mt-6 sm:mt-10 md:mt-12">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-orange-100 backdrop-blur-sm">
                 <span>🎓</span> Join 1,200+ Campus Foodies
               </span>
 
-              <h1 className="mt-4 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
+              <h1 className="mt-3 sm:mt-4 text-2xl font-black leading-tight sm:text-4xl lg:text-5xl">
                 Skip the lines.
-                <br />
+                <span className="inline md:hidden"> </span>
+                <br className="hidden md:inline" />
                 Eat well.
-                <br />
+                <span className="inline md:hidden"> </span>
+                <br className="hidden md:inline" />
                 Repeat daily.
               </h1>
 
-              <p className="mt-4 max-w-md text-sm leading-6 text-orange-100/90 sm:text-base sm:leading-7">
+              <p className="mt-2.5 sm:mt-4 max-w-md text-xs sm:text-sm md:text-base leading-relaxed text-orange-100/90">
                 Set up your student account to unlock the full canteen menu, save your personal cart, and enjoy seamless order collection between classes.
               </p>
             </div>
           </div>
 
-          {/* Value Highlights */}
-          <div className="relative z-10 mt-8 space-y-3 pt-6 border-t border-white/15 text-xs sm:text-sm text-orange-50">
+          {/* Value Highlights (Shown on tablet & desktop) */}
+          <div className="relative z-10 mt-6 md:mt-8 space-y-3 pt-4 sm:pt-6 border-t border-white/15 text-xs sm:text-sm text-orange-50 hidden md:block">
             <div className="flex items-center gap-3">
               <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/15 text-base">
                 🥪
@@ -189,7 +191,7 @@ export default function RegisterPage() {
         </section>
 
         {/* Right Side: Registration Form */}
-        <section className="flex flex-col justify-center p-7 sm:p-10 md:p-12 lg:p-14">
+        <section className="flex flex-col justify-center p-5 sm:p-8 md:p-10 lg:p-12">
           <div className="mb-6">
             <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
               NEW STUDENT
@@ -298,7 +300,7 @@ export default function RegisterPage() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 text-base sm:text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
               />
             </div>
 
@@ -318,7 +320,7 @@ export default function RegisterPage() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 text-base sm:text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
               />
             </div>
 
@@ -340,7 +342,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   minLength={8}
                   required
-                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-2.5 pr-16 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 pr-16 text-base sm:text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                 />
                 <button
                   type="button"
@@ -370,7 +372,7 @@ export default function RegisterPage() {
                   value={form.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-2.5 pr-16 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
+                  className="w-full rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 pr-16 text-base sm:text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#ef6b32] focus:bg-white focus:ring-4 focus:ring-orange-100"
                 />
                 <button
                   type="button"

@@ -249,40 +249,42 @@ export default function CartPage() {
 
         {/* Navbar */}
         <nav className="border-b border-orange-100 bg-white/80 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
 
             <Link href="/home" className="flex items-center gap-2">
-              <span className="text-3xl">🍔</span>
-              <span className="text-xl font-black sm:text-2xl">
+              <span className="text-2xl sm:text-3xl">🍔</span>
+              <span className="text-lg font-black sm:text-2xl tracking-tight">
                 Campus <span className="text-[#ef6b32]">Crave.</span>
               </span>
             </Link>
 
             <Link
               href="/home"
-              className="rounded-xl border border-orange-200 px-4 py-2.5 text-sm font-bold text-orange-600 transition hover:bg-orange-50"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-orange-200 px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold text-orange-600 transition hover:bg-orange-50 active:scale-95"
             >
-              ← Continue Shopping
+              <span>←</span>
+              <span className="hidden sm:inline">Continue Shopping</span>
+              <span className="sm:hidden">Menu</span>
             </Link>
           </div>
         </nav>
 
         {/* Heading */}
-        <section className="mx-auto max-w-7xl px-5 pb-12 pt-12 sm:pt-16">
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 pt-8 sm:pt-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
+            <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-[#ef6b32]">
               YOUR FOOD SELECTION
             </p>
 
-            <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
+            <h1 className="mt-2 sm:mt-3 text-3xl font-black tracking-tight sm:text-5xl">
               Your Cart<span className="text-[#ef6b32]">.</span>
             </h1>
 
-            <p className="mt-3 text-gray-500">
+            <p className="mt-2 text-sm sm:text-base text-gray-500">
               {totalItems} {totalItems === 1 ? "item" : "items"} selected
               for your next campus break.
             </p>
@@ -383,15 +385,15 @@ export default function CartPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, x: -30, height: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="overflow-hidden rounded-2xl border border-orange-100 bg-white/90 p-4 shadow-sm sm:p-5"
+                      className="overflow-hidden rounded-2xl border border-orange-100 bg-white/90 p-3.5 shadow-sm sm:p-5 transition hover:shadow-md"
                     >
-                      <div className="flex items-center gap-4 sm:gap-5">
+                      <div className="flex items-center gap-3 sm:gap-5">
 
                         {/* Food image */}
                         <div
-                          className={`flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${
+                          className={`flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${
                             item.color || "from-orange-100 to-yellow-50"
-                          } text-5xl sm:h-28 sm:w-28 sm:text-6xl`}
+                          } text-4xl sm:h-28 sm:w-28 sm:text-6xl overflow-hidden`}
                         >
                           {item.image ? (
                             <img
@@ -400,50 +402,50 @@ export default function CartPage() {
                               className="h-full w-full rounded-2xl object-cover"
                             />
                           ) : (
-                            item.emoji || "🍽️"
+                            <span>{item.emoji || "🍽️"}</span>
                           )}
                         </div>
 
                         {/* Food details */}
                         <div className="min-w-0 flex-1">
-                          <p className="text-xs font-bold uppercase tracking-wider text-[#ef6b32]">
+                          <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#ef6b32]">
                             {item.category}
                           </p>
 
-                          <h3 className="mt-1 truncate text-base font-extrabold sm:text-xl">
+                          <h3 className="mt-0.5 truncate text-sm font-extrabold text-gray-900 sm:text-xl">
                             {item.name}
                           </h3>
 
-                          <p className="mt-1 text-sm text-gray-500">
-                            ₹{item.price} per item
+                          <p className="mt-0.5 text-xs text-gray-500 sm:text-sm">
+                            ₹{item.price} each
                           </p>
 
                           <button
                             onClick={() => removeItem(item.foodId)}
                             disabled={updatingId === item.foodId}
-                            className="mt-2 text-xs font-bold text-red-500 hover:underline disabled:opacity-50 cursor-pointer"
+                            className="mt-1.5 inline-flex items-center py-1 text-xs font-bold text-red-500 hover:text-red-700 hover:underline disabled:opacity-50 cursor-pointer active:scale-95"
                           >
                             {updatingId === item.foodId ? "Removing..." : "Remove"}
                           </button>
                         </div>
 
                         {/* Quantity controls */}
-                        <div className="flex shrink-0 flex-col items-end gap-3">
-                          <p className="text-base font-black sm:text-lg">
+                        <div className="flex shrink-0 flex-col items-end gap-2 sm:gap-3">
+                          <p className="text-sm font-black text-gray-900 sm:text-lg">
                             ₹{item.price * item.quantity}
                           </p>
 
-                          <div className="flex items-center gap-3 rounded-xl border border-orange-100 bg-orange-50/70 p-1.5">
+                          <div className="flex items-center gap-1 sm:gap-2 rounded-xl border border-orange-100 bg-orange-50/70 p-1 sm:p-1.5">
                             <button
                               onClick={() => updateQuantity(item.foodId, -1)}
                               disabled={updatingId === item.foodId}
                               aria-label={`Decrease ${item.name} quantity`}
-                              className="flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-orange-600 shadow-sm transition hover:bg-orange-100 disabled:opacity-50 cursor-pointer"
+                              className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-white font-bold text-orange-600 shadow-xs transition hover:bg-orange-100 active:scale-90 disabled:opacity-50 cursor-pointer"
                             >
                               −
                             </button>
 
-                            <span className="min-w-4 text-center text-sm font-extrabold">
+                            <span className="min-w-5 text-center text-xs sm:text-sm font-extrabold text-gray-800">
                               {updatingId === item.foodId ? "…" : item.quantity}
                             </span>
 
@@ -451,7 +453,7 @@ export default function CartPage() {
                               onClick={() => updateQuantity(item.foodId, 1)}
                               disabled={updatingId === item.foodId}
                               aria-label={`Increase ${item.name} quantity`}
-                              className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#ef6b32] font-bold text-white shadow-sm transition hover:bg-orange-600 disabled:opacity-50 cursor-pointer"
+                              className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-[#ef6b32] font-bold text-white shadow-xs transition hover:bg-orange-600 active:scale-90 disabled:opacity-50 cursor-pointer"
                             >
                               +
                             </button>
