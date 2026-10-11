@@ -13,8 +13,8 @@ const providers = [];
 // 1. Google OAuth Provider
 providers.push(
   Google({
-    clientId: googleClientId || "placeholder-google-client-id",
-    clientSecret: googleClientSecret || "placeholder-google-client-secret",
+    clientId: googleClientId || process.env.AUTH_GOOGLE_ID,
+    clientSecret: googleClientSecret || process.env.AUTH_GOOGLE_SECRET,
     allowDangerousEmailAccountLinking: true,
   })
 );
@@ -89,6 +89,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
   secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
   trustHost: true,
+  debug: true,
   providers,
   callbacks: {
     async jwt({ token, user }) {
